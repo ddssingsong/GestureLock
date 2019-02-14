@@ -106,16 +106,8 @@
 -keep class * implements java.lang.annotation.Annotation {*;}
 
 #==========================================实体类混淆============================================
--keep public class * extends com.trustmobi.mixin.base.bean.BaseBean
--keep public class com.trustmobi.mixin.base.bean.BaseBean { *; }
 
--keep public class * extends com.trustmobi.mixin.longconn.response.MinaResponse
--keep public class com.trustmobi.mixin.longconn.response.MinaResponse { *; }
--keep public class com.trustmobi.mixin.longconn.response.**{*;}
 
--keep class com.android.mobi.**{ *; }
-
--keep public class com.trustmobi.mixin.utils.JsonUtil { *; }
 
 #=========================================第三方包===============================================
 

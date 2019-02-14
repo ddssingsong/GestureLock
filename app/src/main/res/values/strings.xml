@@ -3,4 +3,7 @@
     <string name="gesture_input_old_pwd">输入旧的密码</string>
     <string name="gesture_set_pwd">设置手势密码</string>
     <string name="gesture_set_new_pwd">设置新的手势密码</string>
+
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
 </resources>
