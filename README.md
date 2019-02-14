@@ -15,11 +15,11 @@
 
 2. 设置手势密码
 
-![功能预览](https://github.com/ddssingsong/GuestureLock/blob/master/image/test1.jpg)
+![功能预览](https://github.com/ddssingsong/GuestureLock/blob/master/image/test1.gif)
 
 3. 验证手势密码
 
-![功能预览](https://github.com/ddssingsong/GuestureLock/blob/master/image/test2.jpg)
+![功能预览](https://github.com/ddssingsong/GuestureLock/blob/master/image/test2.gif)
 
 #### 定制开发
 
