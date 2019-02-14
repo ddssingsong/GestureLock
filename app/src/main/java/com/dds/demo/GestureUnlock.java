@@ -9,8 +9,6 @@ import com.dds.gestureunlock.util.ResourceUtil;
 
 /**
  * 手势密码入口
- * <p>
- * Created by zhangyipeng with Email: sandy1108@163.com at Date: 2018/8/29.
  */
 public class GestureUnlock {
     private static GestureUnlock sGestureUnlock;

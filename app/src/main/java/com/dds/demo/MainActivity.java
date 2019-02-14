@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 GestureUnlock.getInstance().createGestureUnlock(MainActivity.this);
             }
         });
-        //验证手势密码事件
+        // 验证手势密码事件
         mVerifyGestureUnlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                 GestureUnlock.getInstance().verifyGestureUnlock(MainActivity.this);
             }
         });
-
+        // 修改手势密码
         mModifyGestureUnlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

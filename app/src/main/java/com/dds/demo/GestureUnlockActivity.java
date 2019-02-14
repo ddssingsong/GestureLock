@@ -203,7 +203,6 @@ public class GestureUnlockActivity extends AppCompatActivity {
                         //验证成功
                         Log.d(TAG, "onVerifyResult:验证成功");
                         toolbar.setTitle(R.string.gesture_set_new_pwd);
-                        GestureUnlock.getInstance().clearGestureCode(GestureUnlockActivity.this);
                         showCreateGestureLayout();
                     } else {
                         Log.d(TAG, "onVerifyResult:验证失败");
