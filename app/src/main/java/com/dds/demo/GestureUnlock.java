@@ -41,6 +41,10 @@ public class GestureUnlock {
         GestureUnlockActivity.openActivity(activityContext, GestureUnlockActivity.TYPE_GESTURE_VERIFY);
     }
 
+    public void modifyGestureUnlock(Context activityContext) {
+        GestureUnlockActivity.openActivity(activityContext, GestureUnlockActivity.TYPE_GESTURE_MODIFY);
+    }
+
 
     public boolean isGestureCodeSet(Context context) {
         return !TextUtils.isEmpty(getGestureCodeSet(context));

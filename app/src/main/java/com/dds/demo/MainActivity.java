@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private AlertDialog mAlertDialog;
 
     private Button mInitGestureUnlock;
+    private Button mModifyGestureUnlock;
     private Button mVerifyGestureUnlock;
 
     @Override
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         mStartFingerPrint = findViewById(R.id.btn_fingerprint);
         mVerifyResult = findViewById(R.id.tv_auth_result);
         mInitGestureUnlock = findViewById(R.id.btn_init_gesture_unlock);
+        mModifyGestureUnlock = findViewById(R.id.btn_modify_gesture_unlock);
         mVerifyGestureUnlock = findViewById(R.id.btn_verify_gesture_unlock);
     }
 
@@ -145,6 +147,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 GestureUnlock.getInstance().init(MainActivity.this.getApplicationContext());
                 GestureUnlock.getInstance().verifyGestureUnlock(MainActivity.this);
+            }
+        });
+
+        mModifyGestureUnlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GestureUnlock.getInstance().init(MainActivity.this.getApplicationContext());
+                GestureUnlock.getInstance().modifyGestureUnlock(MainActivity.this);
             }
         });
     }

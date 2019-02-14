@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
-            app:title="设置手势密码"
+            app:title="@string/gesture_set_pwd"
             app:titleTextAppearance="@style/Toolbar.TitleText"
             app:titleTextColor="@android:color/white" />
 

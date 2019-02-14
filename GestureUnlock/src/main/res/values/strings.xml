@@ -7,7 +7,7 @@
     <string name="plugin_uexGestureUnlock_restartCreationButtonTitle">重新设置手势密码</string>
     <string name="plugin_uexGestureUnlock_codeLengthErrorPrompt">请至少连续绘制%d个点</string>
     <string name="plugin_uexGestureUnlock_checkErrorPrompt">与首次绘制不一致，请再次绘制</string>
-    <string name="plugin_uexGestureUnlock_verificationErrorPrompt">验证错误!您还可以尝试%d次</string>
+    <string name="plugin_uexGestureUnlock_verificationErrorPrompt">验证错误！您还可以尝试%d次</string>
     <string name="plugin_uexGestureUnlock_verificationBeginPrompt">请验证手势密码</string>
     <string name="plugin_uexGestureUnlock_verificationSucceedPrompt">验证通过</string>
     <string name="plugin_uexGestureUnlock_codeCheckPrompt">请再次绘制手势密码</string>

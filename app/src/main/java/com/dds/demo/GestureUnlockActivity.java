@@ -3,6 +3,8 @@ package com.dds.demo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,7 +12,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.dds.gestureunlock.fragment.GestureCreateFragment;
 import com.dds.gestureunlock.fragment.GestureVerifyFragment;
@@ -21,6 +26,7 @@ import com.dds.gestureunlock.vo.ResultVerifyVO;
  * File Description: 手势密码解锁认证Activity
  */
 public class GestureUnlockActivity extends AppCompatActivity {
+    private static final String TAG = "dds_test";
     public Toolbar toolbar;
 
     private Fragment currentFragment;
@@ -30,6 +36,7 @@ public class GestureUnlockActivity extends AppCompatActivity {
 
     public static final int TYPE_GESTURE_CREATE = 1;
     public static final int TYPE_GESTURE_VERIFY = 2;
+    public static final int TYPE_GESTURE_MODIFY = 3;
 
     public static void openActivity(Context activity, int type) {
         Intent intent = new Intent(activity, GestureUnlockActivity.class);
@@ -57,6 +64,7 @@ public class GestureUnlockActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
     }
 
     private void initVar() {
@@ -68,6 +76,9 @@ public class GestureUnlockActivity extends AppCompatActivity {
         } else if (type == TYPE_GESTURE_VERIFY) {
             //手势密码认证
             showVerifyGestureLayout();
+        } else if (type == TYPE_GESTURE_MODIFY) {
+            // 修改手势密码
+            showModifyGestureLayout();
         } else {
             //无效操作，退出
             finish();
@@ -128,31 +139,97 @@ public class GestureUnlockActivity extends AppCompatActivity {
      * 显示验证手势密码的布局
      */
     private void showVerifyGestureLayout() {
+        toolbar.setVisibility(View.GONE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.BLACK);
+
+            //底部导航栏
+            //window.setNavigationBarColor(activity.getResources().getColor(colorResId));
+        }
         if (mGestureVerifyFragment == null) {
             mGestureVerifyFragment = new GestureVerifyFragment();
             mGestureVerifyFragment.setGestureVerifyListener(new GestureVerifyFragment.GestureVerifyListener() {
                 @Override
                 public void onVerifyResult(ResultVerifyVO result) {
+                    if (result.isFinished()) {
+                        //验证成功
+                        Log.d(TAG, "onVerifyResult:验证成功");
+                    } else {
+                        Log.d(TAG, "onVerifyResult:验证失败");
+                    }
 
                 }
 
                 @Override
                 public void closeLayout() {
-
+                    GestureUnlockActivity.this.finish();
                 }
 
                 @Override
                 public void onStartCreate() {
+                    // 开启了手势密码，但是本地被清空了，需要重置
 
                 }
 
                 @Override
                 public void onCancel() {
+                    // 忘记密码使用其他方式进行
 
                 }
 
                 @Override
                 public void onEventOccur(int eventCode) {
+                    Log.d(TAG, "onEventOccur:" + eventCode);
+
+                }
+            });
+        }
+        mGestureVerifyFragment.setData(ConfigGestureVO.defaultConfig());
+        safeAddFragment(mGestureVerifyFragment, R.id.fragment_container, "GestureVerifyFragment");
+        mGestureVerifyFragment.setGestureCodeData(GestureUnlock.getInstance().getGestureCodeSet(this));
+    }
+
+
+    private void showModifyGestureLayout() {
+        toolbar.setTitle(getString(R.string.gesture_input_old_pwd));
+        if (mGestureVerifyFragment == null) {
+            mGestureVerifyFragment = new GestureVerifyFragment();
+            mGestureVerifyFragment.setGestureVerifyListener(new GestureVerifyFragment.GestureVerifyListener() {
+                @Override
+                public void onVerifyResult(ResultVerifyVO result) {
+                    if (result.isFinished()) {
+                        //验证成功
+                        Log.d(TAG, "onVerifyResult:验证成功");
+                        toolbar.setTitle(R.string.gesture_set_new_pwd);
+                        GestureUnlock.getInstance().clearGestureCode(GestureUnlockActivity.this);
+                        showCreateGestureLayout();
+                    } else {
+                        Log.d(TAG, "onVerifyResult:验证失败");
+                    }
+
+                }
+
+                @Override
+                public void closeLayout() {
+                }
+
+                @Override
+                public void onStartCreate() {
+                    // 开启了手势密码，但是本地被清空了，需要重置
+
+                }
+
+                @Override
+                public void onCancel() {
+                    // 忘记密码使用其他方式进行
+
+                }
+
+                @Override
+                public void onEventOccur(int eventCode) {
+                    Log.d(TAG, "onEventOccur:" + eventCode);
 
                 }
             });

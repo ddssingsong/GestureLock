@@ -1,5 +1,6 @@
 package com.dds.gestureunlock.fragment;
 
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dds.gestureunlock.JsConst;
+import com.dds.gestureunlock.R;
 import com.dds.gestureunlock.util.GestureUtil;
 import com.dds.gestureunlock.util.ResourceUtil;
 import com.dds.gestureunlock.vo.ConfigGestureVO;
@@ -185,12 +187,17 @@ public class GestureVerifyFragment extends GestureBaseFragment implements OnClic
         }
         if (!TextUtils.isEmpty(mData.getIconImage())) {
             mImgUserLogo.setVisibility(View.VISIBLE);
-            mImgUserLogo.setImageBitmap(ResourceUtil.getLocalImg(this.getActivity(),
-                    mData.getIconImage()));
+            Bitmap bitmap = ResourceUtil.getLocalImg(this.getActivity(), mData.getIconImage());
+            if (bitmap != null) {
+                mImgUserLogo.setImageBitmap(bitmap);
+            }
+            mImgUserLogo.setImageResource(R.drawable.plugin_uexgestureunlock_user_logo);
+
         } else {
-            mImgUserLogo.setVisibility(View.INVISIBLE);
+            mImgUserLogo.setVisibility(View.VISIBLE);
+            mImgUserLogo.setImageResource(R.drawable.plugin_uexgestureunlock_user_logo);
         }
-        mTextForget.setTextColor(mData.getNormalThemeColor());
+        mTextForget.setTextColor(mData.getSelectedThemeColor());
         mTextForget.setText(mData.getCancelVerificationButtonTitle());
         setTextTipNormal(mData.getVerificationBeginPrompt());
     }

@@ -22,10 +22,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
 import android.graphics.Color;
-
-import java.io.IOException;
-import java.io.InputStream;
+import android.graphics.Paint;
+import android.graphics.Shader;
 
 public class ResourceUtil {
 
@@ -157,6 +158,7 @@ public class ResourceUtil {
         int id = getResStringID(resName);
         return resources.getString(id);
     }
+
     public static String[] getStringArray(String resArrayName) {
         try {
             int id = getResArrayID(resArrayName);
@@ -226,10 +228,27 @@ public class ResourceUtil {
         try {
             if (imgUrl.startsWith("/")) {
                 bitmap = BitmapFactory.decodeFile(imgUrl);
+                bitmap = createCircleImage(bitmap);
             }
         } catch (OutOfMemoryError e) {
             e.printStackTrace();
         }
         return bitmap;
     }
+
+    public static Bitmap createCircleImage(Bitmap source) {
+        int width = source.getWidth();
+        int height = source.getHeight();
+        float radius = Math.min(width, height) * 0.5f;
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        //画布设置遮罩效果
+        paint.setShader(new BitmapShader(source, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
+        //处理图像数据
+        Bitmap bitmap = Bitmap.createBitmap(width, height, source.getConfig());
+        Canvas canvas = new Canvas(bitmap);
+        //bitmap的显示由画笔paint来决定
+        canvas.drawCircle(width * 0.5f, height * 0.5f, radius, paint);
+        return bitmap;
+    }
+
 }
