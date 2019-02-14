@@ -15,10 +15,11 @@ import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.dds.gestureunlock.util.GestureUtil;
 import com.dds.gestureunlock.JsConst;
 import com.dds.gestureunlock.entity.GesturePoint;
+import com.dds.gestureunlock.util.GestureUtil;
 import com.dds.gestureunlock.util.OnDrawArrowListener;
+import com.dds.gestureunlock.util.VibrateHelp;
 import com.dds.gestureunlock.vo.ConfigGestureVO;
 
 import java.util.ArrayList;
@@ -39,6 +40,8 @@ public class GestureDrawLine extends View {
     private List<Pair<GesturePoint, GesturePoint>> lineList;// 记录画过的线
     private Map<String, GesturePoint> autoCheckPointMap;// 自动选中的情况点
     private boolean isDrawEnable = true; // 是否允许绘制
+
+    ;
 
     /**
      * 屏幕的宽度和高度
@@ -164,9 +167,11 @@ public class GestureDrawLine extends View {
                 if (currentPoint != null) {
                     currentPoint.setPointState(JsConst.POINT_STATE_SELECTED);
                     passWordSb.append(currentPoint.getNum());
+                    VibrateHelp.vSimple(getContext(), 30);
                 }
                 // canvas.drawPoint(mov_x, mov_y, paint);// 画点
                 invalidate();
+
                 break;
             case MotionEvent.ACTION_MOVE:
                 clearScreenAndDrawList();
@@ -184,6 +189,7 @@ public class GestureDrawLine extends View {
                         // 把currentPoint这个点设置选中为true;
                         currentPoint.setPointState(JsConst.POINT_STATE_SELECTED);
                         passWordSb.append(currentPoint.getNum());
+                        VibrateHelp.vSimple(getContext(), 30);
                     }
                 }
                 if (pointAt == null || currentPoint.equals(pointAt) ||
@@ -217,6 +223,7 @@ public class GestureDrawLine extends View {
                         }
                         lineList.add(pair1);
                         passWordSb.append(betweenPoint.getNum());
+                        VibrateHelp.vSimple(getContext(), 30);
                         Pair<GesturePoint, GesturePoint> pair2 =
                                 new Pair<GesturePoint, GesturePoint>(betweenPoint, pointAt);
                         if (mOnDrawArrowListener != null) {
@@ -224,6 +231,7 @@ public class GestureDrawLine extends View {
                         }
                         lineList.add(pair2);
                         passWordSb.append(pointAt.getNum());
+                        VibrateHelp.vSimple(getContext(), 30);
                         // 设置中间点选中
                         betweenPoint.setPointState(JsConst.POINT_STATE_SELECTED);
                         // 赋值当前的point;
@@ -236,6 +244,7 @@ public class GestureDrawLine extends View {
                         }
                         lineList.add(pair);
                         passWordSb.append(pointAt.getNum());
+                        VibrateHelp.vSimple(getContext(), 30);
                         // 赋值当前的point;
                         currentPoint = pointAt;
                     }

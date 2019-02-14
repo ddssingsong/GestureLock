@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.dds.gestureunlock.fragment.GestureCreateFragment;
 import com.dds.gestureunlock.fragment.GestureVerifyFragment;
@@ -19,8 +20,8 @@ import com.dds.gestureunlock.vo.ResultVerifyVO;
 /**
  * File Description: 手势密码解锁认证Activity
  */
-public class GestureUnlockActivity extends FragmentActivity {
-
+public class GestureUnlockActivity extends AppCompatActivity {
+    public Toolbar toolbar;
 
     private Fragment currentFragment;
     private GestureCreateFragment mGestureCreateFragment;
@@ -44,8 +45,17 @@ public class GestureUnlockActivity extends FragmentActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gesture_unlock);
+        initView();
         initVar();
+        initListener();
 
+
+    }
+
+
+    private void initView() {
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
     }
 
@@ -64,6 +74,15 @@ public class GestureUnlockActivity extends FragmentActivity {
         }
     }
 
+    private void initListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GestureUnlockActivity.this.finish();
+            }
+        });
+    }
+
     /**
      * 显示初始化手势密码的布局
      */
@@ -76,7 +95,6 @@ public class GestureUnlockActivity extends FragmentActivity {
                 public void onCreateFinished(String gestureCode) {
                     // 创建手势密码完成
                     GestureUnlock.getInstance().setGestureCode(GestureUnlockActivity.this, gestureCode);
-                    Toast.makeText(GestureUnlockActivity.this, R.string.gesture_set_success, Toast.LENGTH_SHORT).show();
                     GestureUnlockActivity.this.finish();
                 }
 
@@ -93,6 +111,7 @@ public class GestureUnlockActivity extends FragmentActivity {
                 @Override
                 public void onCancel() {
                     // 取消创建手势密码
+                    GestureUnlockActivity.this.finish();
                 }
 
                 @Override

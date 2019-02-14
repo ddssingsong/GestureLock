@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">AuthenticationDemo</string>
+    <string name="app_name">GestureLock</string>
     <string name="gesture_set_success">设置成功</string>
 </resources>

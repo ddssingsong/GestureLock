@@ -52,8 +52,8 @@ public class ConfigGestureVO implements Serializable {
         this.errorRemainInterval = 1000;
         this.successRemainInterval = 200;
         this.backgroundColor = "#FFFFFF";
-        this.normalThemeColor = "#B2B2B2";
-        this.selectedThemeColor = "#40D4AF";
+        this.normalThemeColor = "#515151";
+        this.selectedThemeColor = "#27a2f2";
         this.errorThemeColor = "#F12C20";
         this.creationBeginPrompt = ResourceUtil.getString("plugin_uexGestureUnlock_creationBeginPrompt");
         this.codeLengthErrorPrompt = ResourceUtil.getString("plugin_uexGestureUnlock_codeLengthErrorPrompt");
