@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#48423D"
+    android:paddingTop = "40dp"
+    android:id="@+id/plugin_uexGestureUnlock_bg"
+    >
+
+    <LinearLayout
+        android:id="@+id/plugin_uexGestureUnlock_gesture_tip_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="130dp"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp">
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/plugin_uexGestureUnlock_gesture_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/plugin_uexGestureUnlock_gesture_tip_layout">
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dip"
+        android:paddingRight="20dip"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/plugin_uexGestureUnlock_text_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/plugin_uexGestureUnlock_text_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

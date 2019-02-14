@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">GestureUnlock</string>
+
+    <!--plugin_uexGestureUnlock use-->
+    <string name="plugin_uexGestureUnlock_cancelCreationButtonTitle">取消设置手势密码</string>
+    <string name="plugin_uexGestureUnlock_cancelVerificationButtonTitle">忘记密码?</string>
+    <string name="plugin_uexGestureUnlock_restartCreationButtonTitle">重新设置手势密码</string>
+    <string name="plugin_uexGestureUnlock_codeLengthErrorPrompt">请至少连续绘制%d个点</string>
+    <string name="plugin_uexGestureUnlock_checkErrorPrompt">与首次绘制不一致，请再次绘制</string>
+    <string name="plugin_uexGestureUnlock_verificationErrorPrompt">验证错误!您还可以尝试%d次</string>
+    <string name="plugin_uexGestureUnlock_verificationBeginPrompt">请验证手势密码</string>
+    <string name="plugin_uexGestureUnlock_verificationSucceedPrompt">验证通过</string>
+    <string name="plugin_uexGestureUnlock_codeCheckPrompt">请再次绘制手势密码</string>
+    <string name="plugin_uexGestureUnlock_creationBeginPrompt">请设置手势密码</string>
+    <string name="plugin_uexGestureUnlock_creationSucceedPrompt">手势密码设置成功</string>
+
+    <string name="plugin_uexGestureUnlock_errorCodeNoneGesture">在未设置密码的情况下进行验证密码操作</string>
+    <string name="plugin_uexGestureUnlock_errorCodeCancelCreate">用户取消了创建密码过程</string>
+    <string name="plugin_uexGestureUnlock_errorCodeCancelVerify">用户取消了验证密码过程</string>
+    <string name="plugin_uexGestureUnlock_errorCodeTooManyTry">尝试密码次数过多</string>
+    <string name="plugin_uexGestureUnlock_errorCodeCancelOutside">插件被cancel接口强制关闭</string>
+    <string name="plugin_uexGestureUnlock_errorCodeUnknown">发生未知错误</string>
+
+    <string name="plugin_uexGestureUnlock_plugin_init">插件初始化</string>
+    <string name="plugin_uexGestureUnlock_start_verify">开始手势密码验证</string>
+    <string name="plugin_uexGestureUnlock_verify_error">手势密码验证失败</string>
+    <string name="plugin_uexGestureUnlock_cancel_verify">验证过程被用户取消</string>
+    <string name="plugin_uexGestureUnlock_verify_success">手势密码验证成功</string>
+    <string name="plugin_uexGestureUnlock_start_create">开始手势密码设置</string>
+    <string name="plugin_uexGestureUnlock_length_error">用户输入的密码不符合长度要求</string>
+    <string name="plugin_uexGestureUnlock_second_input">开始第二次输入手势密码</string>
+    <string name="plugin_uexGestureUnlock_not_same">两次输入的密码不一致</string>
+    <string name="plugin_uexGestureUnlock_cancel_create">手势密码设置被用户取消</string>
+    <string name="plugin_uexGestureUnlock_create_success">手势密码设置完成</string>
+</resources>
