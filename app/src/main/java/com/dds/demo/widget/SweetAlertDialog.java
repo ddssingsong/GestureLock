@@ -9,6 +9,7 @@ import android.view.View;
 import com.dds.demo.R;
 
 /**
+ * 一个酷炫的 Dialog
  * Created by dds on 2019/2/14.
  * android_shuai@163.com
  */

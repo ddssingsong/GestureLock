@@ -3,6 +3,7 @@ package com.dds.gestureunlock.manager;
 import android.content.Context;
 
 /**
+ * 密码逻辑接口
  * Created by dds on 2019/2/13.
  * android_shuai@163.com
  */
