@@ -1,4 +1,4 @@
-# GuestureLock
+# GestureLock
 手势解锁 指纹解锁，兼容绝大数手机
 
 1. 功能预览
