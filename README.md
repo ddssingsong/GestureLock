@@ -1,25 +1,31 @@
 # GestureLock
 手势解锁 指纹解锁，兼容绝大数手机
-1. 功能预览
+#### 手势解锁功能预览
 
-   * 设置手势密码
+* 设置手势密码
 
-   * 修改手势密码
-   * 验证手势密码
-   * 选中震动效果
-   * 顶部预览效果
-   * 可自定义密码存储位置（sp,db）
-   * 可设置访客密码，默认数组[0]为超级密码，数组[1]为访客密码
+* 修改手势密码
+* 验证手势密码
+* 选中震动效果
+* 顶部预览效果
+* 可自定义密码存储位置（sp,db）
+* 可设置访客密码，默认数组[0]为超级密码，数组[1]为访客密码
 
 ![功能预览](https://github.com/ddssingsong/GuestureLock/blob/master/image/image1.jpg)
 
-2. 设置手势密码
+1. 设置手势密码
 
 ![功能预览](https://github.com/ddssingsong/GuestureLock/blob/master/image/test1.gif)
 
-3. 验证手势密码
+2. 验证手势密码
 
 ![功能预览](https://github.com/ddssingsong/GuestureLock/blob/master/image/test2.gif)
+
+
+
+#### 指纹解锁预览
+
+![指纹解锁](https://github.com/ddssingsong/GuestureLock/blob/master/image/test3.gif)
 
 #### 定制开发
 

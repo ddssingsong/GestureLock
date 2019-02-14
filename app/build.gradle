@@ -31,6 +31,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':FingerPrintManager')
     implementation project(':GestureUnlock')
+    // dialog
+    implementation 'com.github.cazaea:sweet-alert-dialog:1.0.0'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
