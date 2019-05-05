@@ -23,6 +23,7 @@ import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.RestrictTo;
 
+import java.lang.ref.WeakReference;
 import java.security.Signature;
 
 import javax.crypto.Cipher;
@@ -85,25 +86,34 @@ public final class FingerprintManagerCompatApi23 {
     }
 
     private static FingerprintManager.AuthenticationCallback wrapCallback(final AuthenticationCallback callback) {
+        final WeakReference<AuthenticationCallback> callbackRef = new WeakReference<>(callback);
         return new FingerprintManager.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errMsgId, CharSequence errString) {
-                callback.onAuthenticationError(errMsgId, errString);
+                if (callbackRef.get() != null) {
+                    callbackRef.get().onAuthenticationError(errMsgId, errString);
+                }
             }
 
             @Override
             public void onAuthenticationHelp(int helpMsgId, CharSequence helpString) {
-                callback.onAuthenticationHelp(helpMsgId, helpString);
+                if (callbackRef.get() != null) {
+                    callbackRef.get().onAuthenticationHelp(helpMsgId, helpString);
+                }
             }
 
             @Override
             public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
-                callback.onAuthenticationSucceeded(new AuthenticationResultInternal(unwrapCryptoObject(result.getCryptoObject())));
+                if (callbackRef.get() != null) {
+                    callbackRef.get().onAuthenticationSucceeded(new AuthenticationResultInternal(unwrapCryptoObject(result.getCryptoObject())));
+                }
             }
 
             @Override
             public void onAuthenticationFailed() {
-                callback.onAuthenticationFailed();
+                if (callbackRef.get() != null) {
+                    callbackRef.get().onAuthenticationFailed();
+                }
             }
         };
     }

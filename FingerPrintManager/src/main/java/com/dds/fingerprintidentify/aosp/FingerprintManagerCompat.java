@@ -22,6 +22,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.os.CancellationSignal;
 
+import java.lang.ref.WeakReference;
 import java.security.Signature;
 
 import javax.crypto.Cipher;
@@ -183,25 +184,37 @@ public final class FingerprintManagerCompat {
         }
 
         private static FingerprintManagerCompatApi23.AuthenticationCallback wrapCallback(final AuthenticationCallback callback) {
+            final WeakReference<AuthenticationCallback> callbackRef = new WeakReference<>(callback);
+
             return new FingerprintManagerCompatApi23.AuthenticationCallback() {
                 @Override
                 public void onAuthenticationError(int errMsgId, CharSequence errString) {
-                    callback.onAuthenticationError(errMsgId, errString);
+                    if (callbackRef.get() != null) {
+                        callbackRef.get().onAuthenticationError(errMsgId, errString);
+                    }
+
                 }
 
                 @Override
                 public void onAuthenticationHelp(int helpMsgId, CharSequence helpString) {
-                    callback.onAuthenticationHelp(helpMsgId, helpString);
+                    if (callbackRef.get() != null) {
+                        callbackRef.get().onAuthenticationHelp(helpMsgId, helpString);
+                    }
                 }
 
                 @Override
                 public void onAuthenticationSucceeded(FingerprintManagerCompatApi23.AuthenticationResultInternal result) {
-                    callback.onAuthenticationSucceeded(new AuthenticationResult(unwrapCryptoObject(result.getCryptoObject())));
+                    if (callbackRef.get() != null) {
+                        callback.onAuthenticationSucceeded(new AuthenticationResult(unwrapCryptoObject(result.getCryptoObject())));
+                    }
+
                 }
 
                 @Override
                 public void onAuthenticationFailed() {
-                    callback.onAuthenticationFailed();
+                    if (callbackRef.get() != null) {
+                        callbackRef.get().onAuthenticationFailed();
+                    }
                 }
             };
         }
