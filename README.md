@@ -43,13 +43,13 @@ public interface ICache {
     boolean isGestureCodeSet(Context context);
     // 获取手势密码
     String getGestureCodeSet(Context context);
-    // 获取访客手势密码
+    
     String getGuestGestureCodeSet(Context context);
     // 清空手势密码
     void clearGestureCode(Context context);
     // 设置手势密码
     void setGestureCode(Context context, String gestureCode);
-    // 设置访客手势密码
+   
     void setGuestGestureCode(Context context, String gestureCode);
 
 }
